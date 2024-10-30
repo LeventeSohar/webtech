@@ -1,4 +1,13 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 
-Route::get('/', [PageController::class, 'home']); // Homepage route
-Route::get('/about', [PageController::class, 'about']); // About page route
+// Homepage route
+Route::get('/', [PageController::class, 'home']);
+
+// About page route
+Route::get('/about', [PageController::class, 'about']);
+
+// Route for handling the form submission
+Route::post('/submit', [PageController::class, 'submitForm'])->name('submitForm');
