@@ -8,7 +8,7 @@ use App\Http\Controllers\AnimalController;
 Route::resource('animals', AnimalController::class);
 
 // Homepage route
-Route::get('/home', [PageController::class, 'home']);
+Route::get('/', [PageController::class, 'home']);
 // About page route
 Route::get('/about', [PageController::class, 'about']);
 
@@ -21,6 +21,7 @@ Route::resource('items', ItemController::class);
 // Route to display the items view
 Route::get('/items', [ItemController::class, 'index'])->name('items.index');
 
+Route::get('/donate', [PageController::class, 'donate']);
 
 //Static routes for now (except Adoption)
 /*Route::get('/', function () {
@@ -33,9 +34,6 @@ Route::get('/guidelines', function () {
     return 'Guidelines (to be implemented)';
 });
 
-Route::get('/donate', function () {
-    return 'Donate page (to be implemented)';
-});
 
 Route::get('/volunteer', function () {
     return 'Volunteer page (to be implemented)';

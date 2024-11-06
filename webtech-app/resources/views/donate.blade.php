@@ -1,33 +1,3 @@
-<!-- resources/views/home.blade.php -->
- <!--DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Welcome to the Homepage!</h1>
-
-  
- @if(session('success'))
-        <div>
-            {{ session('success') }}
-        </div>
-    @endif
-
-    <form action="{{ route('submitForm') }}" method="POST">
-        @csrf 
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <button type="submit">Submit</button>
-    </form>
-</body>
-</html-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,6 +117,9 @@
             color: #fff;
             padding: 1rem;
             text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
         .footer p {
             margin: 0;
@@ -179,22 +152,27 @@
 
     <!-- Hero Section -->
     <div class="hero">
-        <img src="/images/1.dogadopt.png" alt="Front Picture">
-        <h1>Welcome to Pet Shelter Flensburg</h1>
-        <p>You are one step closer to giving a lonely pet a second chance. Whether you’re looking for a dog, cat, or small animal, we’re here to help you find your new furry friend.</p>
+        <h1>Pet Shelter Flensburg Thank's you for help</h1>
+        <p>As a charity run shelter, Pet Shelter Flensborg relies entirely on the supprt from kind hearted souls.</p>
     </div>
 
     <!-- Team Section -->
     <div class="team-section">
-        <h2>Meet Our Team</h2>
-        <img src="/images/2.team.png" alt="Team Photo">
-        <p> Here we introduce our small, friendly team of permanent employees and our volunteer board of directors so that you can recognize us on site. Our animal shelter and our animal welfare association is strongly supported by very committed volunteers who spend several thousand hours a year doing a large part of the work involved, such as looking after our youth groups, maintaining the grounds, renovation and repair work, planning and organizing flea markets and open days, preparing and manning our information stands and much more. 
-            We look forward to your visit with us.
-            See you soon, your animal shelter Flensburg</p>
+        <h2>How to donate</h2>
+        <img src="/images/qr1.png" alt="Mobilepay QR">
+        <p> Use the above QR code to donate via mobilepay. </p>
+        <img src="/images/qr2.png" alt="Paypal QR">
+        <p> Use the above QR code to donate via paypal. </p>
+        <br>
+        <img src="/images/happyDog.png" alt="Happy Dog smiling">
+        <p> Bruno thanks for you gratitude </p>
+
 
     </div>
 
+    <!-- Should this be removed? 
     @include('info-box')
+    -->
     
     <!-- Footer -->
     <footer class="footer">
@@ -203,6 +181,6 @@
 
 
     <!-- Scripts -->
-    <!script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
