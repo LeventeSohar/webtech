@@ -22,6 +22,11 @@ class PageController extends Controller
         return view('donate');
     }
 
+    public function signin()
+    {
+        return view('signin');
+    }
+
     public function submitForm(Request $request)
     {
         // Validate the incoming request data

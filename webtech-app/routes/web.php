@@ -23,6 +23,8 @@ Route::get('/items', [ItemController::class, 'index'])->name('items.index');
 
 Route::get('/donate', [PageController::class, 'donate']);
 
+Route::get('/signin', [PageController::class, 'signin']);
+
 //Static routes for now (except Adoption)
 /*Route::get('/', function () {
     return view('home');
@@ -43,8 +45,6 @@ Route::get('/blog', function () {
     return 'Blog page (to be implemented)';
 });
 
-Route::get('/signin', function () {
-    return 'Sign-in page (to be implemented)';
-});
+
 
 
