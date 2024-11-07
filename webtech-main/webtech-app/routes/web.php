@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\volunteercontroller;
+
 
 Route::resource('animals', AnimalController::class);
 
@@ -37,9 +39,15 @@ Route::get('/guidelines', function () {
 });
 
 
-Route::get('/volunteer', function () {
-    return 'Volunteer page (to be implemented)';
-});
+// Route for displaying the Volunteer page
+Route::get('/volunteer', [VolunteerController::class, 'showForm'])->name('volunteer.form');
+Route::post('/volunteer', [VolunteerController::class, 'submitForm']);
+
+// Other page routes
+Route::get('/', [PageController::class, 'home']);
+Route::get('/about', [PageController::class, 'about']);
+Route::get('/donate', [PageController::class, 'donate']);
+Route::get('/signin', [PageController::class, 'signin']);
 
 Route::get('/blog', function () {
     return 'Blog page (to be implemented)';
