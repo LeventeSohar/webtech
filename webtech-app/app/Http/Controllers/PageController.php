@@ -27,6 +27,16 @@ class PageController extends Controller
         return view('signin');
     }
 
+    public function guidelines()
+    {
+        return view('guidelines');
+    }
+
+    public function blog()
+    {
+        return view('blog');
+    }
+
     public function submitForm(Request $request)
     {
         // Validate the incoming request data

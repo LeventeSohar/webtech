@@ -25,6 +25,10 @@ Route::get('/donate', [PageController::class, 'donate']);
 
 Route::get('/signin', [PageController::class, 'signin']);
 
+Route::get('/guidelines', [PageController::class, 'guidelines']);
+
+Route::get('/blog', [PageController::class, 'blog']);
+
 //Static routes for now (except Adoption)
 /*Route::get('/', function () {
     return view('home');
@@ -32,18 +36,14 @@ Route::get('/signin', [PageController::class, 'signin']);
 */
 Route::get('/adopt', [AnimalController::class, 'adopt'])->name('adopt.index');
 
-Route::get('/guidelines', function () {
-    return 'Guidelines (to be implemented)';
-});
+
 
 
 Route::get('/volunteer', function () {
     return 'Volunteer page (to be implemented)';
 });
 
-Route::get('/blog', function () {
-    return 'Blog page (to be implemented)';
-});
+
 
 
 
