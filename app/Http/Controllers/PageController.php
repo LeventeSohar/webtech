@@ -17,6 +17,16 @@ class PageController extends Controller
         return view('about'); // returns the about view
     }
 
+    public function donate()
+    {
+        return view('donate');
+    }
+
+    public function signin()
+    {
+        return view('signin');
+    }
+
     public function submitForm(Request $request)
     {
         // Validate the incoming request data
