@@ -1,64 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <script src="https://cdn.tailwindcss.com"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Pet Shelter Flensburg')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            color: #333;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar {
-            background-color: #0056b3;
-            padding: 1rem;
-        }
-        .navbar-brand, .nav-link {
-            color: #fff !important;
-            font-weight: 500;
-        }
-    </style>
+
+    <!-- Include Vite for Tailwind CSS -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#">Pet Shelter Flensburg</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="/adopt">Adopt</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/guidelines">Guidelines</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/donate">Donate</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/volunteer">Volunteer</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/signin">Sign-in</a></li>
-                </ul>
+    <nav class="bg-blue-600 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <!-- Brand -->
+                <a href="/" class="text-white text-2xl font-bold">Pet Shelter Flensburg</a>
+
+                <!-- Mobile Menu Button -->
+                <button id="menuToggle" class="block lg:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <!-- Desktop Links -->
+                <div id="menu" class="hidden lg:flex lg:items-center lg:space-x-4">
+                    <a href="/adopt" class="text-white hover:text-gray-200">Adopt</a>
+                    <a href="/guidelines" class="text-white hover:text-gray-200">Guidelines</a>
+                    <a href="/donate" class="text-white hover:text-gray-200">Donate</a>
+                    <a href="/volunteer" class="text-white hover:text-gray-200">Volunteer</a>
+                    <a href="/blog" class="text-white hover:text-gray-200">Blog</a>
+                    <a href="/signin" class="text-white hover:text-gray-200">Sign-in</a>
+                </div>
             </div>
+        </div>
+
+        <!-- Mobile Menu Links -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-blue-500">
+            <a href="/adopt" class="block text-white px-4 py-2 hover:bg-blue-600">Adopt</a>
+            <a href="/guidelines" class="block text-white px-4 py-2 hover:bg-blue-600">Guidelines</a>
+            <a href="/donate" class="block text-white px-4 py-2 hover:bg-blue-600">Donate</a>
+            <a href="/volunteer" class="block text-white px-4 py-2 hover:bg-blue-600">Volunteer</a>
+            <a href="/blog" class="block text-white px-4 py-2 hover:bg-blue-600">Blog</a>
+            <a href="/signin" class="block text-white px-4 py-2 hover:bg-blue-600">Sign-in</a>
         </div>
     </nav>
 
     <!-- Page Content -->
-    <div class="container my-4">
+    <div class="container mx-auto my-8">
         @yield('content')
     </div>
 
-    @include('info-box')
-
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 Pet Shelter Flensburg - All Rights Reserved</p>
+    <footer class="bg-gray-800 text-white text-center py-4">
+        &copy; 2024 Pet Shelter Flensburg - All Rights Reserved
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script for Menu Toggle -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 </body>
+
 </html>

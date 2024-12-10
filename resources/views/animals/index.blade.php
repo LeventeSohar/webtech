@@ -6,7 +6,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Type</th>
+                <th>Tyyyyype</th>
                 <th>Size</th>
                 <th>Age</th>
                 <th>Color</th>

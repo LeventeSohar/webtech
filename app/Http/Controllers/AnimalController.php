@@ -4,119 +4,181 @@ namespace App\Http\Controllers;
 
 use App\Models\Animal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AnimalController extends Controller
-{   
-    // for showing list of animals in adopt
-    public function adopt()
-    {
-     $animals = Animal::all(); // Fetch all animals from the database
-     return view('adopt.index', compact('animals')); // Return the view for adoption
-    }
-
+{
     /**
-     * Display a listing of the resource with optional filters.
+     * Display a listing of the animals.
+     *
+     * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index()
     {
-        //$query = Animal::query();
-
-        // Filtering logic
-        //if ($request->has('type')) {
-        //    $query->where('type', $request->type);
-        //}
-        //if ($request->has('size')) {
-        //    $query->where('size', $request->size);
-        //}
-        //if ($request->has('age')) {
-        //    $query->where('age', $request->age);
-        //}
-        //if ($request->has('color')) {
-        //    $query->where('color', $request->color);
-        //}
-
-        //$animals = $query->get();
-
-        $animals = Animal::all();
+        $animals = Animal::all(); // Fetch all animals from the database
         return view('animals.index', compact('animals'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new animal.
+     *
+     * @return \Illuminate\View\View
      */
     public function create()
     {
-        return view('animals.create');
+        return view('animals.create'); // Show the create form
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created animal in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'type' => 'required|in:dog,cat,rodent',
-            'size' => 'nullable|string',
-            'age' => 'nullable|integer',
-            'color' => 'nullable|string',
-            'description' => 'nullable|string',
-            'garden_needed' => 'required_if:type,dog|boolean',
-            'picture' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        // Validate the form inputs
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'species' => 'required|string|max:255',
+            'gender' => 'required|in:male,female',
+            'date_of_arrival' => 'required|date',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation
         ]);
 
-        if ($request->hasFile('picture')) {
-            $validated['picture'] = $request->file('picture')->store('animals', 'public');
+        // Handle image upload if there's a file
+        $profilePicturePath = null;
+        if ($request->hasFile('profile_picture')) {
+            // Store the image in the 'public/animals' directory
+            $profilePicturePath = $request->file('profile_picture')->store('animals', 'public');
         }
 
-        Animal::create($validated);
-        return redirect()->route('animals.index')->with('success', 'Whoop whoop, you added an animal!');
+        // Create a new animal record
+        Animal::create([
+            'name' => $request->name,
+            'species' => $request->species,
+            'breed' => $request->breed,
+            'gender' => $request->gender,
+            'date_of_birth' => $request->date_of_birth,
+            'date_of_arrival' => $request->date_of_arrival,
+            'color' => $request->color,
+            'weight' => $request->weight,
+            'is_neutered' => $request->is_neutered ?? false,
+            'is_vaccinated' => $request->is_vaccinated ?? false,
+            'is_microchipped' => $request->is_microchipped ?? false,
+            'microchip_number' => $request->microchip_number,
+            'medical_history' => $request->medical_history,
+            'special_needs' => $request->special_needs,
+            'personality_traits' => $request->personality_traits,
+            'is_adoptable' => $request->is_adoptable ?? true,
+            'adoption_date' => $request->adoption_date,
+            'adopted_by' => $request->adopted_by,
+            'surrendered_by' => $request->surrendered_by,
+            'notes' => $request->notes,
+            'profile_picture' => $profilePicturePath, // Store the image path in the database
+        ]);
+
+        // Redirect to the list of animals or a success page
+        return redirect()->route('adopt.index')->with('success', 'Animal added successfully!');
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified animal.
+     *
+     * @param  \App\Models\Animal  $animal
+     * @return \Illuminate\View\View
      */
     public function show(Animal $animal)
     {
-        return view('adoption.show', compact('animal'));
+        return view('adopt.show', compact('animal')); // Show a specific animal's details
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified animal.
+     *
+     * @param  \App\Models\Animal  $animal
+     * @return \Illuminate\View\View
      */
     public function edit(Animal $animal)
     {
-        return view('animals.edit', compact('animal'));
+        return view('animals.edit', compact('animal')); // Show the edit form for the specific animal
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified animal in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Animal  $animal
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Animal $animal)
     {
-        $validated = $request->validate([
-            'type' => 'required|in:dog,cat,rodent',
-            'size' => 'nullable|string',
-            'age' => 'nullable|integer',
-            'color' => 'nullable|string',
-            'description' => 'nullable|string',
-            'garden_needed' => 'required_if:type,dog|boolean',
-            'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        // Validate the form inputs
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'species' => 'required|string|max:255',
+            'gender' => 'required|in:male,female',
+            'date_of_arrival' => 'required|date',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation
         ]);
 
-        if ($request->hasFile('picture')) {
-            $validated['picture'] = $request->file('picture')->store('animals', 'public');
+        // Handle image upload if there's a file
+        if ($request->hasFile('profile_picture')) {
+            // Delete old profile picture from storage if it exists
+            if ($animal->profile_picture) {
+                Storage::delete('public/' . $animal->profile_picture);
+            }
+
+            // Store the new image and update the path
+            $profilePicturePath = $request->file('profile_picture')->store('animals', 'public');
+            $animal->profile_picture = $profilePicturePath;
         }
 
-        $animal->update($validated);
-        return redirect()->route('animals.index')->with('success', 'Amazing, you updated the animals');
+        // Update the animal record with the new data
+        $animal->update([
+            'name' => $request->name,
+            'species' => $request->species,
+            'breed' => $request->breed,
+            'gender' => $request->gender,
+            'date_of_birth' => $request->date_of_birth,
+            'date_of_arrival' => $request->date_of_arrival,
+            'color' => $request->color,
+            'weight' => $request->weight,
+            'is_neutered' => $request->is_neutered ?? false,
+            'is_vaccinated' => $request->is_vaccinated ?? false,
+            'is_microchipped' => $request->is_microchipped ?? false,
+            'microchip_number' => $request->microchip_number,
+            'medical_history' => $request->medical_history,
+            'special_needs' => $request->special_needs,
+            'personality_traits' => $request->personality_traits,
+            'is_adoptable' => $request->is_adoptable ?? true,
+            'adoption_date' => $request->adoption_date,
+            'adopted_by' => $request->adopted_by,
+            'surrendered_by' => $request->surrendered_by,
+            'notes' => $request->notes,
+        ]);
+
+        // Redirect to the animal's details page or a success page
+        return redirect()->route('animals.show', $animal)->with('success', 'Animal updated successfully!');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified animal from storage.
+     *
+     * @param  \App\Models\Animal  $animal
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Animal $animal)
     {
+        // Delete the animal's profile picture from storage if it exists
+        if ($animal->profile_picture) {
+            Storage::delete('public/' . $animal->profile_picture);
+        }
+
+        // Delete the animal record
         $animal->delete();
-        return redirect()->route('animals.index')->with('success', 'Lovely, another animal found a home!');
+
+        // Redirect to the list of animals or a success page
+        return redirect()->route('animals.index')->with('success', 'Animal deleted successfully!');
     }
 }
