@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mx-auto p-8">
     @if ($animal)
-        <h1 class="text-4xl font-semibold text-center text-gray-800 mb-6">{{ ucfirst($animal->name) }} - Details</h1>
+        <h1 class="text-4xl font-semibold text-center text-gray-800 mb-6">{{ ucfirst($animal->name) }} - Details (show.blade)</h1>
 
         <div class="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
