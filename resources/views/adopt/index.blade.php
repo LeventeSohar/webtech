@@ -3,6 +3,18 @@
 @section('content')
     <h1>Animals Available for Adoption</h1>
     
+    <!-- Filter Form -->
+    <form method="GET" action="{{ route('adopt.index') }}" style="margin-bottom: 20px;">
+        <label for="type">Filter by Type:</label>
+        <select name="type" id="type">
+            <option value="">-- Select the animal type --</option>
+            <option value="dog">dog</option>
+            <option value="cat">cat</option>
+            <option value="rodent">rodent</option>
+        </select>
+        <button type="submit" style="padding: 5px 15px;">Filter</button>
+    </form>
+
     <div class="animal-list">
         @foreach($animals as $animal)
             <!-- Animal Card -->

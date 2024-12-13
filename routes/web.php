@@ -15,17 +15,7 @@ Route::get('/', function () {
 
 Route::get('/adopt', [AnimalController::class, 'adopt'])->name('adopt.index');
 
-Route::get('/adopt/{animal}', [AnimalController::class, 'show'])->name('adopt.show');
-
-//I need to temporarely workaround those to make my site work! Its needed for authentificationa and authorization!
-Route::get('/profile/edit', function () {
-    return 'This is a placeholder for profile editing.';
-})->name('profile.edit');
-
-Route::get('/logout', function () {
-    return 'Logout functionality will be implemented here.';
-})->name('logout');
-
+//Route::get('/adopt/{animal}', [AnimalController::class, 'show'])->name('adopt.show');
 
 Route::get('/guidelines', function () {
     return 'Guidelines (to be implemented)';
