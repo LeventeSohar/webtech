@@ -4,93 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Pet Shelter Flensburg</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            color: #333;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar {
-            background-color: #0056b3;
-            padding: 1rem;
-        }
-        .navbar-brand, .nav-link {
-            color: #fff !important;
-            font-weight: 500;
-        }
-        .navbar-brand {
-            font-size: 1.5rem;
-        }
-        .navbar-nav .nav-item:not(:last-child) {
-            margin-right: 1rem;
-        }
-        .nav-link:hover {
-            color: #d1e0f0 !important;
-        }
-
-        /* Dashboard content */
-        .dashboard-container {
-            margin-top: 20px;
-        }
-
-        .dashboard-card {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            color: #1a1818;
-        }
-
-        .footer {
-            background-color: #0056b3;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .footer p {
-            margin: 0;
-            font-size: 0.9rem;
-        }
-    </style>
 </head>
-<body>
+<body class="font-sans text-gray-800 bg-gray-100">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="/">Pet Shelter Flensburg</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <nav class="bg-blue-700 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-white text-2xl font-semibold">Pet Shelter Flensburg</a>
+            <button class="lg:hidden text-white" aria-label="Toggle navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="/adopt">Adopt</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/guidelines">Guidelines</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/donate">Donate</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/volunteer">Volunteer</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/signin">Sign-in</a></li>
-                </ul>
+            <div class="hidden lg:flex space-x-4">
+                <a href="/adopt" class="text-white hover:text-blue-300">Adopt</a>
+                <a href="/guidelines" class="text-white hover:text-blue-300">Guidelines</a>
+                <a href="/donate" class="text-white hover:text-blue-300">Donate</a>
+                <a href="/volunteer" class="text-white hover:text-blue-300">Volunteer</a>
+                <a href="/blog" class="text-white hover:text-blue-300">Blog</a>
+                <a href="/signin" class="text-white hover:text-blue-300">Sign-in</a>
             </div>
         </div>
     </nav>
 
     <!-- Dashboard Content -->
-    <main class="dashboard-container">
-        <div class="container">
-            <div class="dashboard-card">
-                <h2>Welcome to Your Dashboard</h2>
+    <main class="py-8">
+        <div class="container mx-auto">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-blue-700 mb-4">Welcome to Your Dashboard</h2>
                 <p>This is your personalized dashboard. Here you can access all your information and manage your account.</p>
                 <!-- Add additional dashboard content here, like user info, statistics, etc. -->
             </div>
@@ -98,11 +41,9 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 Pet Shelter Flensburg - All Rights Reserved</p>
+    <footer class="bg-blue-700 text-white py-4 text-center">
+        <p class="text-sm">&copy; 2024 Pet Shelter Flensburg - All Rights Reserved</p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
