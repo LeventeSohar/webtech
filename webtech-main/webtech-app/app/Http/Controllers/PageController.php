@@ -6,14 +6,9 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function home()
+    public function guidelines()
     {
-        return view('home'); // returns the home view
-    }
-
-    public function about()
-    {
-        return view('about'); // returns the about view
+        return view('guidelines');
     }
 
     public function donate()
@@ -21,21 +16,14 @@ class PageController extends Controller
         return view('donate');
     }
 
-    public function signin()
+    public function home()
     {
-        return view('signin');
+        return view('home');
     }
 
-    public function submitForm(Request $request)
+    public function blog()
     {
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-        ]);
-
-        // Process the data (e.g., save it to the database)
-        // For demonstration, we'll just return a success message
-        return back()->with('success', 'Form submitted successfully! Name: ' . $validatedData['name'] . ', Email: ' . $validatedData['email']);
+        return view('home');
     }
 }
+
