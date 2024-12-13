@@ -7,37 +7,46 @@ use Illuminate\Http\Request;
 
 class AnimalController extends Controller
 {   
-    // for showing list of animals in adopt
+    // 1. for showing list of all animals in adopt 
     public function adopt()
     {
-     $animals = Animal::all(); // Fetch all animals from the database
-     return view('adopt.index', compact('animals')); // Return the view for adoption
+        $animals = Animal::all(); // Fetch all animals from the database
+        return view('adopt.index', compact('animals')); // Return the view for adoption
     }
+
+    // 2. for showing the further details when clicked on "read more"
+    public function show(Animal $animal)
+    {
+        if (!$animal) {
+            return abort(404,'Animal not found');
+        }
+
+        return view('adopt.show', compact('animal'));
+    }
+
+    //Always trouble for some reason (Authentification eventhough shouldnt be needed and neither in blade nor route nor middleware written!)
+   
+
 
     /**
      * Display a listing of the resource with optional filters.
      */
     public function index(Request $request)
     {
+        //1. (old) without filter - so showing all animals:
+        $animals = Animal::all();
+
+        
+        //3. Not only one condition (type but also when created - 2 conditions combined)
         //$query = Animal::query();
 
-        // Filtering logic
+        //2. With filter (Hannas individual topic):
         //if ($request->has('type')) {
-        //    $query->where('type', $request->type);
-        //}
-        //if ($request->has('size')) {
-        //    $query->where('size', $request->size);
-        //}
-        //if ($request->has('age')) {
-        //    $query->where('age', $request->age);
-        //}
-        //if ($request->has('color')) {
-        //    $query->where('color', $request->color);
-        //}
+           //  $query->where('type', $request->input('type'));
+       // }
 
-        //$animals = $query->get();
-
-        $animals = Animal::all();
+        // Fetch animals with applied filters
+         //$animals = $query->get();
         return view('animals.index', compact('animals'));
     }
 
@@ -70,14 +79,6 @@ class AnimalController extends Controller
 
         Animal::create($validated);
         return redirect()->route('animals.index')->with('success', 'Whoop whoop, you added an animal!');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Animal $animal)
-    {
-        return view('adoption.show', compact('animal'));
     }
 
     /**
@@ -119,4 +120,5 @@ class AnimalController extends Controller
         $animal->delete();
         return redirect()->route('animals.index')->with('success', 'Lovely, another animal found a home!');
     }
+    
 }
