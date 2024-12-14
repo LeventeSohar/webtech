@@ -148,3 +148,29 @@ table td {
     word-wrap: break-word;
     white-space: normal;
 }
+
+.adoption-page {
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    border-radius: 15px 15px 0 0;
+    object-fit: cover;
+    height: 200px;
+    width: 100%;
+}
+
+.card-body {
+    text-align: center;
+}
