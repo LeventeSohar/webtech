@@ -71,8 +71,8 @@
                     <button class="w-full bg-red-500 text-white py-2 rounded-lg mt-4">You are not an Admin</button>
                 @endif
 
-                <form action="{{ route('dashboard') }}" method="GET">
-                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg mt-4">Go to Dashboard</button>
+                <form action="{{ route('adopt.index') }}" method="GET">
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg mt-4">See our available animals</button>
                 </form>
 
                 <form action="{{ route('logout') }}" method="POST" class="mt-4">

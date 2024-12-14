@@ -17,7 +17,7 @@ class Animal extends Model
         'color', 'weight', 'is_neutered', 'is_vaccinated', 'is_microchipped',
         'microchip_number', 'medical_history', 'special_needs', 'personality_traits',
         'is_adoptable', 'adoption_date', 'adopted_by', 'surrendered_by', 'notes', 
-        'profile_picture', 'gallery', 'created_by', 'updated_by',
+        'profile_picture', 'gallery', 'created_by', 'updated_by', 'admin_comments',
     ];
 
     // You can define relationships here if needed

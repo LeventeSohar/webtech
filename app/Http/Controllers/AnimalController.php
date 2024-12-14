@@ -122,6 +122,11 @@ class AnimalController extends Controller
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation
         ]);
 
+            // Only admin should be able to update admin_comments
+    if (auth()->user()->is_admin && $request->has('admin_comments')) {
+        $animal->admin_comments = $request->input('admin_comments');
+    }
+
         // Handle image upload if there's a file
         if ($request->hasFile('profile_picture')) {
             // Delete old profile picture from storage if it exists

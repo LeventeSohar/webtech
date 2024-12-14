@@ -112,12 +112,21 @@
             @endif
         </div>
 
+        <!-- Admin-Only Section -->
+        @if(auth()->user()->is_admin)
+            <div>
+                <label for="admin_comments" class="block text-gray-700 font-bold">Admin Comments (Visible Only to Admins)</label>
+                <textarea name="admin_comments" id="admin_comments" rows="3" class="w-full p-2 border rounded">{{ $animal->admin_comments }}</textarea>
+            </div>
+        @endif
+
         <!-- Submit Button -->
         <div>
             <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
                 Save Changes
             </button>
         </div>
+
     </form>
 </div>
 @endsection

@@ -29,6 +29,16 @@
                     <p class="text-lg text-gray-600"><strong>Microchip Number:</strong> {{ $animal->microchip_number ?? 'N/A' }}</p>
                     <p class="text-lg text-gray-600"><strong>Personality Traits:</strong> {{ $animal->personality_traits ?? 'No traits provided' }}</p>
                     <p class="text-lg text-gray-600"><strong>Special Needs:</strong> {{ $animal->special_needs ?? 'No special needs' }}</p>
+
+                    <!-- Admin Comments (Only visible to admins) -->
+                    @if(Auth::check() && Auth::user()->is_admin)
+                        <div class="mt-4 p-4 border rounded bg-gray-50">
+                            <p class="text-lg font-semibold text-gray-700"><strong>Admin Comments:</strong></p>
+                            <p class="text-gray-600">{{ $animal->admin_comments ?? 'No comments available.' }}</p>
+                        </div>
+                    @endif
+
+
                 </div>
             </div>
 

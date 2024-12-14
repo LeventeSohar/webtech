@@ -66,3 +66,6 @@ Route::post('/two-factor/verify', [AuthenticatedSessionController::class, 'verif
 Route::get('/two-factor/enable', [AuthenticatedSessionController::class, 'enableTwoFactor'])
     ->name('two-factor.challenge');
 // Remove redundant logout route
+
+Route::delete('/animals/{id}', [AnimalController::class, 'destroy'])->middleware('admin')->name('animals.destroy');
+

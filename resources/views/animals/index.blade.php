@@ -31,6 +31,15 @@
                 <a href="{{ route('animals.show', $animal) }}" class="text-blue-500 hover:underline">View</a>
                 <a href="{{ route('animals.edit', $animal) }}" class="text-yellow-500 hover:underline">Edit</a>
             </div>
+
+            @if(auth()->check() && auth()->user()->is_admin)
+    <form action="{{ route('animals.destroy', $animal->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this animal?');">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+@endif
+
         </div>
         @endforeach
     </div>
