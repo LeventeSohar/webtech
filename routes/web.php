@@ -7,16 +7,17 @@ use App\Http\Controllers\AnimalController;
 
 Route::resource('animals', AnimalController::class);
 
+//I (Hanna) provided the beginning structure for all with static routes:
 
-//Static routes for now (except Adoption)
 Route::get('/', function () {
     return view('home');
 });
 
+// The only dynamic route i (Hanna) made (functioning) for the adopt part
 Route::get('/adopt', [AnimalController::class, 'adopt'])->name('adopt.index');
 
-//Route::get('/adopt/{animal}', [AnimalController::class, 'show'])->name('adopt.show');
 
+//The other routes are implemented by multiple team members later!
 Route::get('/guidelines', function () {
     return 'Guidelines (to be implemented)';
 });
