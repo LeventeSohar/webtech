@@ -1,0 +1,9 @@
+id,type,size,age,color,description,garden_needed,picture,created_at,updated_at
+4,dog,big,2,gold/ yellow,"Marco - He made us understand why his breed is called golden retriever. He is such a sunshine and loves to retrieve his dummy. If you would like an active dog and happy dog, then Marco could be the one for you!",1,"Marco_id4.jpg
+
+",2024-12-03,NULL
+5,dog,small,13,white,Cloudy is our old lady. She is sweet and calm - a perfect match for elderly people.,0,Cloudy_id5.jpg,2024-12-07,NULL
+6,cat,NULL,1,black,"Shadow is a young, playful kitten that loves human company. A family without other animals is preffered for him.",0,Shadow_id6.jpg,2024-12-09,NULL
+7,rodent,NULL,3,brown-white-black,"Lilly and Sissi are two sweet guinea pig sisters that would love to be adopted together. Don´t be fooled, guinea pigs seem quit and calm, but once they get active and start `popcorning` they are a joy to every viewer ;)",0,LillySissy_id7.jpg,2024-12-05,NULL
+8,rodent,NULL,1,brown,Hanni and Nanni are looking for a home together. They are only 1 year old and love to stay indoors during the winter and - if possible - outside during the summer. ,1,HanniNanni_id8.jpg,2024-12-10,NULL
+9,cat,NULL,5,white,Petersson is a typical stay at home cat. He enjoys his time alone during the day and likes to greet you once your home. Cuddles in the evening are also welcomed for him :),0,Petersson_id9.jpg,2024-12-11,NULL
