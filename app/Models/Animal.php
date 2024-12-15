@@ -18,4 +18,6 @@ class Animal extends Model
         'garden_needed',
         'picture',
     ];
+
+    public $timestamps = true;  //for filtering of how long animals have been in shelter!!
 }

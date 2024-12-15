@@ -3,18 +3,35 @@
 @section('content')
     <h1>Animals Available for Adoption</h1>
     
-    <!-- Filter Form -->
+    <!-- Unified Filter Form -->
     <form method="GET" action="{{ route('adopt.index') }}" style="margin-bottom: 20px;">
+        <!-- Dropdown: Filter by Type -->
         <label for="type">Filter by Type:</label>
         <select name="type" id="type">
-            <option value="">-- Select the animal type --</option>
-            <option value="dog">dog</option>
-            <option value="cat">cat</option>
-            <option value="rodent">rodent</option>
+            <option value="">All</option> <!-- 'All' option -->
+            <option value="dog" {{ request('type') === 'dog' ? 'selected' : '' }}>Dog</option>
+            <option value="cat" {{ request('type') === 'cat' ? 'selected' : '' }}>Cat</option>
+            <option value="rodent" {{ request('type') === 'rodent' ? 'selected' : '' }}>Rodent</option>
         </select>
-        <button type="submit" style="padding: 5px 15px;">Filter</button>
+
+        <!-- Checkbox: Show Newest/Oldest -->
+        <label style="margin-left: 20px;">
+            <input type="checkbox" name="newest" value="1" id="newest" 
+                {{ request('newest') ? 'checked' : '' }}>
+            Show Newest First
+        </label>
+
+        <label style="margin-left: 10px;">
+            <input type="checkbox" name="oldest" value="1" id="oldest" 
+                {{ request('oldest') ? 'checked' : '' }}>
+            Show Oldest First
+        </label>
+
+        <!-- Submit Button -->
+        <button type="submit" style="margin-left: 20px; padding: 5px 15px;">Apply Filters</button>
     </form>
 
+    <!-- Animal List -->
     <div class="animal-list">
         @foreach($animals as $animal)
             <!-- Animal Card -->
@@ -32,7 +49,6 @@
 
                     <!-- Details Section -->
                     <div class="animal-details" style="flex: 1;">
-                        <!-- Basic Details -->
                         <p><strong>Age:</strong> {{ $animal->age ?? 'N/A' }} years</p>
                         <p><strong>Size:</strong> {{ $animal->size ?? 'N/A' }}</p>
                         <p><strong>Garden Needed:</strong> {{ $animal->garden_needed ? 'Yes' : 'No' }}</p>
@@ -49,7 +65,6 @@
                 <div id="details-{{ $animal->id }}" 
                     class="animal-more-details" 
                     style="display: none; margin-top: 10px; padding-left: 320px; transition: all 0.3s ease;">
-                    <!-- Further Details -->
                     <p><strong>Color:</strong> {{ $animal->color ?? 'N/A' }}</p>
                     <p><strong>Description:</strong> {{ $animal->description ?? 'No description provided' }}</p>
                 </div>
@@ -57,9 +72,26 @@
         @endforeach
     </div>
 
+    <!-- JavaScript -->
     <script>
-        // JavaScript to handle "Read More" functionality
         document.addEventListener('DOMContentLoaded', function () {
+            // Single-selection logic for checkboxes
+            const newestCheckbox = document.getElementById('newest');
+            const oldestCheckbox = document.getElementById('oldest');
+
+            newestCheckbox.addEventListener('change', function () {
+                if (this.checked) {
+                    oldestCheckbox.checked = false; // Uncheck 'oldest' when 'newest' is checked
+                }
+            });
+
+            oldestCheckbox.addEventListener('change', function () {
+                if (this.checked) {
+                    newestCheckbox.checked = false; // Uncheck 'newest' when 'oldest' is checked
+                }
+            });
+
+            // "Read More" functionality
             document.querySelectorAll('.read-more').forEach(function (button) {
                 button.addEventListener('click', function () {
                     const animalId = this.getAttribute('data-id');
@@ -80,6 +112,3 @@
         });
     </script>
 @endsection
-
- 
-

@@ -1,4 +1,3 @@
-
 <div class="info-box">
     <p><strong>Pet Shelter FLENSBURG</strong><br>
     Westerallee 138, 24941 Flensburg</p>
