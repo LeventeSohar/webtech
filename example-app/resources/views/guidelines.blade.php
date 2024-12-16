@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Shelter Flensburg</title>
+    <title>Pet Shelter Flensburg - Guidelines</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('css/base.css') }}" rel="stylesheet"> 
     <style>
-        
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             color: #333;
@@ -32,7 +31,6 @@
         .nav-link:hover {
             color: #d1e0f0 !important;
         }
-     
 
         /* Footer */
         .footer {
@@ -49,14 +47,7 @@
             font-size: 0.9rem;
         }
 
-                /* styles.css */
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-
+        /* Main Content */
         main {
             max-width: 800px;
             margin: auto;
@@ -67,6 +58,13 @@
             color: #1a1818;
         }
 
+        .guideline-list {
+            margin-top: 20px;
+        }
+
+        .guideline-item {
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -91,23 +89,41 @@
         </div>
     </nav>
 
-
+    <!-- Main Content Section -->
     <main>
-   
+        <h1>Guidelines for Adopting a Pet</h1>
+        <p>We’re excited to help you adopt a pet! Please read our guidelines below to ensure a safe and healthy adoption process for both you and the animals.</p>
+        
+        <div class="guideline-list">
+            <div class="guideline-item">
+                <h2>1. Research Before You Adopt</h2>
+                <p>Make sure to research the type of pet you’re interested in adopting. Different species and breeds have unique needs in terms of diet, exercise, and care.</p>
+            </div>
+            <div class="guideline-item">
+                <h2>2. Be Ready for a Long-Term Commitment</h2>
+                <p>Adopting a pet is a long-term commitment. Ensure you have the time, resources, and dedication to provide a loving and stable environment for your new family member.</p>
+            </div>
+            <div class="guideline-item">
+                <h2>3. Understand the Costs</h2>
+                <p>Owning a pet comes with various costs including food, veterinary care, and supplies. Be prepared for these ongoing expenses before deciding to adopt.</p>
+            </div>
+            <div class="guideline-item">
+                <h2>4. Visit the Pet First</h2>
+                <p>Always meet the pet you’re considering for adoption in person before making a decision. This helps ensure that you’re comfortable with the animal’s personality and temperament.</p>
+            </div>
+            <div class="guideline-item">
+                <h2>5. Complete the Adoption Process</h2>
+                <p>Once you’ve selected a pet, follow through with the necessary adoption paperwork and home checks to ensure the pet’s safety and well-being in your home.</p>
+            </div>
+        </div>
+
+        <p>If you have any further questions about our adoption process, feel free to reach out to us!</p>
     </main>
 
-
- 
-
-    <!-- Should this be removed? 
-    @include('info-box')
-    -->
-    
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 Pet Shelter Flensburg - All Rights Reserved</p>
     </footer>
-
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>

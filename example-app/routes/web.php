@@ -6,6 +6,8 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\VolunteerController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 // Homepage route
 Route::get('/', [PageController::class, 'home']);
@@ -17,7 +19,12 @@ Route::get('/about', [PageController::class, 'about']);
 Route::get('/guidelines', [PageController::class, 'guidelines'])->name('guidelines');
 Route::get('/donate', [PageController::class, 'donate'])->name('donate');
 Route::get('/signin', [PageController::class, 'signin'])->name('signin');
-Route::get('/blog', [PageController::class, 'blog'])->name('blog');
+// Blog Routes
+Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 // Dashboard route (requires authentication)
 Route::get('/dashboard', [PageController::class, 'dashboard'])
