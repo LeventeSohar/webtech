@@ -55,3 +55,7 @@ Route::post('/two-factor/verify', [AuthenticatedSessionController::class, 'verif
     ->name('two-factor.verify');
 Route::get('/two-factor/enable', [AuthenticatedSessionController::class, 'enableTwoFactor'])
     ->name('two-factor.enable');
+
+    
+    Route::delete('/animals/{id}', [AnimalController::class, 'destroy'])->middleware('admin')->name('animals.destroy');
+

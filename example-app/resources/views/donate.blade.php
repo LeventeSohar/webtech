@@ -159,12 +159,12 @@
     <!-- Team Section -->
     <div class="team-section">
         <h2>How to donate</h2>
-        <img src="/images/qr1.png" alt="Mobilepay QR">
+        <img src="/images/mobile.jpg" alt="Mobilepay QR">
         <p> Use the above QR code to donate via mobilepay. </p>
-        <img src="/images/qr2.png" alt="Paypal QR">
+        <img src="/images/paypal.png" alt="Paypal QR">
         <p> Use the above QR code to donate via paypal. </p>
         <br>
-        <img src="/images/happyDog.png" alt="Happy Dog smiling">
+        <img src="/images/CANS.avif" alt="Happy Dog smiling">
         <p> Bruno thanks for you gratitude </p>
 
 

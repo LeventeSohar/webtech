@@ -1,3 +1,122 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Styling - should be in app.css!!*/
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #333;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #0056b3;
+    padding: 1rem;
+}
+
+.navbar-brand,
+.nav-link {
+    color: #fff !important;
+    font-weight: 500;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-item:not(:last-child) {
+    margin-right: 1rem;
+}
+
+.nav-link:hover {
+    color: #d1e0f0 !important;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 1rem;
+    background-color: #e9ecef;
+}
+
+.hero img {
+    max-width: 400px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: #0056b3;
+    margin-top: 1rem;
+}
+
+.hero p {
+    max-width: 700px;
+    color: #555;
+}
+
+
+/* Team section */
+
+.team-section {
+    padding: 3rem 1rem;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.team-section h2 {
+    font-size: 2rem;
+    color: #0056b3;
+    margin-bottom: 1.5rem;
+}
+
+.team-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.team p {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    color: #555;
+    text-align: center;
+}
+
+
+/* <info-box */
+
+.info-box {
+    background-color: hsl(205, 100%, 75%);
+    color: #333;
+    padding: 30px;
+    text-align: center;
+    margin: 2rem 0;
+    border: 1px solid #b3e5fc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-box p {
+    margin: 0.5rem 0;
+}
+
+
+/* Footer */
+
+.footer {
+    background-color: #0056b3;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
