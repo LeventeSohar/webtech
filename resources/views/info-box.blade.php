@@ -7,6 +7,5 @@
     Monday to Friday: 9.00 – 11.00 o`clock and 15.00 – 17.00 o`clock<br>
     Saturday, Sunday and on holidays: 15.00 – 17.00 o`clock<br>
     Phone: 0461-51598<br>
-
-    <button class="email-button">Send us an E-Mail</button>
+    E-Mail: 138@tierschutz-flensburg.de<br>
 </div>
