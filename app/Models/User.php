@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -47,4 +50,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'two_factor_confirmed_at' => 'datetime', // Cast to datetime if necessary
     ];
+
+    public function generateTwoFactorCode()
+    {
+        $this->two_factor_code = rand(100000, 999999);
+        $this->two_factor_expires_at = Carbon::now()->addMinutes(10);
+        $this->save();
+
+        Mail::to($this->email)->send(new TwoFactorCodeMail($this->two_factor_code));
+    }
+
+    public function clearTwoFactorCode()
+    {
+        $this->two_factor_code = null;
+        $this->two_factor_expires_at = null;
+        $this->save();
+    }
+
 }
+
+
